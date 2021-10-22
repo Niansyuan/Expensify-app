@@ -1,0 +1,17 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: $font;
+    font-size:$m-size;
+}
+
+button {
+    font-family: $font;
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: default;
+}
