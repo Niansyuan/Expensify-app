@@ -15,3 +15,15 @@ button {
 button:disabled {
     cursor: default;
 }
+
+// 暫時設定
+p {
+    font-size:$m-size;
+}
+h1 {
+    font-size: $l-size;
+}
+.is-active {
+    color:coral;
+    font-weight: bold;
+}

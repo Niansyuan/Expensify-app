@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './styles/styles.scss'
+import AppRouter from './routers/AppRouters'
 
-ReactDOM.render( <p>this is expensify-app</p>, document.getElementById('app'));
+ReactDOM.render(<AppRouter />, document.getElementById('app'));
