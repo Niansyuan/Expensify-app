@@ -1,5 +1,5 @@
 //Get visible expenses
-const getVisibleExpenses=(expenses,{text,sortBy,startDate,endDate})=>{
+export default(expenses,{text,sortBy,startDate,endDate})=>{
     return expenses.filter((expense)=>{
         //all three are ture,we want to return true from filter
         const startDateMatch= typeof startDate !== "number" || expense.createAt >= startDate;
@@ -15,5 +15,3 @@ const getVisibleExpenses=(expenses,{text,sortBy,startDate,endDate})=>{
         };
     })
 }
-
-export default getVisibleExpenses;
