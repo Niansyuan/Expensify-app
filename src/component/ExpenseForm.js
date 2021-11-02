@@ -10,7 +10,8 @@ export default class ExpenseForm extends React.Component {
         note:'',
         amount:'',
         createAt:moment(),
-        calendarFocused: false
+        calendarFocused: false,
+        error:''
     };
     handleDiscriptionChange=(e)=>{
         const description=e.target.value;
@@ -22,7 +23,7 @@ export default class ExpenseForm extends React.Component {
     }
     handleAmountChange=(e)=>{
         const amount=e.target.value;
-        if(amount.match(/^\d*(\.\d{0,2})?$/)){ //regular expression,詳看notion筆記
+        if(amount.match(/^\d{1,}(\.\d{0,2})?$/)){ //regular expression,詳看notion筆記
             this.setState(()=>({amount}))
         }
     }
@@ -32,10 +33,25 @@ export default class ExpenseForm extends React.Component {
     handleFocusChange=({focused})=>{
         this.setState(()=>({calendarFocused:focused}))
     }
+    handleSubmit=(e)=>{
+        e.preventDefault();
+        if(!this.state.description || !this.state.amount){
+            this.setState(()=>({error:'Please Provide Description and Amount'}))
+        }else{
+            this.setState(()=>({error:''}))
+            this.props.onSubmit({
+                description:this.state.description,
+                amount:parseFloat(this.state.amount,10),
+                createAt:this.state.createAt.valueOf(),
+                note:this.state.note
+            })
+        }
+    }
     render(){
         return (
             <div>
-                <form>
+                {this.state.error && <p>{this.state.error}</p>}
+                <form onSubmit={this.handleSubmit}>
                     <input 
                     type="text"
                     placeholder="Description"
