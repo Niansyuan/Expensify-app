@@ -9,16 +9,21 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
-    "webpack-cli": "^4.9.0"
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.2",
+    "jest": "^27.3.1",
+    "live-server": "^1.2.1",
+    "react-test-renderer": "^17.0.2",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1"
   },
   "scripts": {
-    "serve": "live-server public/",
     "build:dev": "webpack --mode development",
     "build:prod": "webpack --mode production",
     "dev-server": "webpack-dev-server",
     "test": "jest --config=jest.config.json --watchAll",
-    "start":"node server/server.js",
-    "heroku-postbuild":"npm run build:prod"
+    "start": "node server/server.js",
+    "heroku-postbuild": "npm run build:prod"
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.14.5",
@@ -31,13 +36,9 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^6.4.0",
     "dev-server": "^0.2.0",
-    "enzyme": "^3.11.0",
-    "enzyme-to-json": "^3.6.2",
     "express": "^4.17.1",
-    "jest": "^27.3.1",
     "jest-enzyme": "^7.1.2",
     "jquery": "^3.6.0",
-    "live-server": "^1.2.1",
     "mini-css-extract-plugin": "^2.4.4",
     "moment": "^2.29.1",
     "node-sass": "^6.0.1",
@@ -48,14 +49,12 @@
     "react-modal": "^3.14.3",
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
-    "react-test-renderer": "^17.0.2",
     "redux": "^4.1.1",
     "sass-loader": "^12.2.0",
     "style-loader": "^3.3.0",
     "uuid": "^3.4.0",
     "validator": "^13.6.0",
-    "webpack": "^5.58.2",
-    "webpack-dev-server": "^4.3.1"
+    "webpack": "^5.58.2"
   },
   "description": ""
 }
