@@ -1,7 +1,9 @@
-import Adapter  from '@wojtekmaj/enzyme-adapter-react-17';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import Enzyme from 'enzyme';
 import "jest-enzyme";
 
 Enzyme.configure({
     adapter: new Adapter()
 })
+
+require("dotenv").config({ path: '.env.test' })

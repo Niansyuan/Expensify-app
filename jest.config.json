@@ -1,5 +1,8 @@
 {
     "snapshotSerializers": [
         "enzyme-to-json/serializer"
-    ]    
+    ],
+    "setupFilesAfterEnv": [
+        "<rootDir>/src/tests/setupTests.js"
+    ]
 }
