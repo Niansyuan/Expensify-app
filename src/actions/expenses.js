@@ -1,4 +1,4 @@
-import { child, get, push, ref, remove } from '@firebase/database';
+import { child, get, push, ref, remove, update } from '@firebase/database';
 import database from '../firebase/firebase';
 
 //ADD_EXPENSES
@@ -47,7 +47,16 @@ export const editExpenses = (id, updates) => ({
     type: 'EDIT_EXPENSES',
     id,
     updates
-})
+});
+
+export const startEditExpenses = (id, updates) => {
+    return (dispatch) => {
+        return update(ref(database, `expenses/${id}`), updates).then(() => {
+            dispatch(editExpenses(id, updates))
+        });
+    };
+};
+
 
 //SET_EXPENSES (add this action after introduce firebase)
 export const setExpenses = (expenses) => ({
