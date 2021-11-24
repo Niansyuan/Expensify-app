@@ -1,4 +1,4 @@
-import { push, ref } from '@firebase/database';
+import { child, get, push, ref } from '@firebase/database';
 import database from '../firebase/firebase';
 
 //ADD_EXPENSES
@@ -8,7 +8,7 @@ export const addExpenses = (expense) => ({
     expense
 });
 
-//dispatch addExpenses to change store (add this after using firebase)
+//dispatch addExpenses to change store (add this action after introduce firebase)
 export const startAddExpenses = (expenseDate = {}) => {
     return (dispatch) => {
         const {
@@ -40,3 +40,27 @@ export const editExpenses = (id, updates) => ({
     id,
     updates
 })
+
+//SET_EXPENSES (add this action after introduce firebase)
+export const setExpenses = (expenses) => ({
+    type: 'SET_EXPENSES',
+    expenses
+});
+
+//startSetExpenses (add this action after introduce firebase)
+export const startSetExpenses = () => {
+    return (dispatch) => {
+        //fetch all expenseData once
+        return get(child(ref(database), 'expenses')).then((snapshot) => {
+            const expenses = [];
+
+            snapshot.forEach((childSnapshot) => {
+                expenses.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                })
+            });
+            dispatch(setExpenses(expenses));
+        });
+    };
+};
