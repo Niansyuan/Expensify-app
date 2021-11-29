@@ -14,14 +14,16 @@ import thunk from 'redux-thunk';
 import database from '../../firebase/firebase';
 import { child, get, ref, set } from '@firebase/database';
 
-const creatMockStore = configureStore([thunk])
+const creatMockStore = configureStore([thunk]);
+const uid = 'thisIsMyFakeUid';
+const defaultAuthState = { auth: { uid } };
 
 beforeEach((done) => {
     const expensesData = {}
     expenses.forEach(({ id, description, amount, note, createAt }) => {
         expensesData[id] = { description, amount, note, createAt }
     })
-    set(ref(database, 'expenses'), expensesData).then(() => done())
+    set(ref(database, `users/${uid}/expenses`), expensesData).then(() => done())
 });
 
 test('should setup remove expense action object', () => {
@@ -33,7 +35,7 @@ test('should setup remove expense action object', () => {
 })
 
 test('should remove expense from database', (done) => {
-    const store = creatMockStore();
+    const store = creatMockStore(defaultAuthState);
     const id = expenses[1].id
     store.dispatch(startRemoveExpenses({ id })).then(() => {
         const action = store.getActions();
@@ -41,7 +43,7 @@ test('should remove expense from database', (done) => {
             type: 'REMOVE_EXPENSES',
             id
         });
-        return get(ref(database, `expenses/${id}`)).then((sanpshot) => {
+        return get(ref(database, `users/${uid}/expenses/${id}`)).then((sanpshot) => {
             expect(sanpshot.val()).toBeFalsy();
             done();
         })
@@ -58,7 +60,7 @@ test('should setup edit expense action object', () => {
 })
 
 test('should edit expense from database', (done) => {
-    const store = creatMockStore();
+    const store = creatMockStore(defaultAuthState);
     const id = expenses[1].id;
     const updates = { amount: 100000 };
     store.dispatch(startEditExpenses(id, updates)).then(() => {
@@ -68,7 +70,7 @@ test('should edit expense from database', (done) => {
             id,
             updates
         });
-        return get(child(ref(database), `expenses/${id}`)).then((snapshot) => {
+        return get(child(ref(database), `users/${uid}/expenses/${id}`)).then((snapshot) => {
             expect(snapshot.val().amount).toBe(updates.amount)
             done();
         });
@@ -84,7 +86,7 @@ test('should setup add expense action object', () => {
 })
 
 test('should add expense to database and store', (done) => {
-    const store = creatMockStore({});
+    const store = creatMockStore(defaultAuthState);
     const expenseData = {
         description: 'Mouse',
         amount: 550,
@@ -101,7 +103,7 @@ test('should add expense to database and store', (done) => {
             }
         })
         const dbref = ref(database);
-        return get(child(dbref, `expenses/${actions[0].expense.id}`));
+        return get(child(dbref, `users/${uid}/expenses/${actions[0].expense.id}`));
     }).then((snapshot) => {
         expect(snapshot.val()).toEqual(expenseData);
         done();
@@ -109,7 +111,7 @@ test('should add expense to database and store', (done) => {
 })
 
 test('should add expense with default to database and store', (done) => {
-    const store = creatMockStore({});
+    const store = creatMockStore(defaultAuthState);
     const expenseDefaults = {
         description: '',
         amount: 0,
@@ -126,7 +128,7 @@ test('should add expense with default to database and store', (done) => {
             }
         })
         const dbref = ref(database);
-        return get(child(dbref, `expenses/${actions[0].expense.id}`));
+        return get(child(dbref, `users/${uid}/expenses/${actions[0].expense.id}`));
     }).then((snapshot) => {
         expect(snapshot.val()).toEqual(expenseDefaults);
         done();
@@ -142,7 +144,7 @@ test('should set up setExpenses action object with data', () => {
 })
 
 test('should fetch the expenses from database', (done) => {
-    const store = creatMockStore({});
+    const store = creatMockStore(defaultAuthState);
     store.dispatch(startSetExpenses()).then(() => {
         const action = store.getActions();
         expect(action[0]).toEqual({
