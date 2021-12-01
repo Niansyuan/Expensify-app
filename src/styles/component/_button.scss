@@ -1,0 +1,35 @@
+.button {
+    background: $shallow-green;
+    color: $white;
+    border:none;
+    font-size: $l-font-size;
+    font-weight: 500;
+    line-height: 1;
+    padding: $xs-size $s-size;
+    text-decoration: none;
+    display: inline-block;
+};
+
+.button:hover {
+    background: darken($shallow-green,8%);
+};
+
+.button--link {
+    background: none;
+    color:$white;
+    border: none;
+    font-size: $l-font-size;
+};
+
+.fas.fa-sign-out-alt {
+    margin: $xs-size $s-size 0 0;
+};
+
+.button--remove {
+    @extend .button;
+    background: $gray;
+};
+
+.button--remove:hover {
+    background: darken($gray,8%);
+};

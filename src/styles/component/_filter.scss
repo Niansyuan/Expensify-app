@@ -1,0 +1,16 @@
+.filter {
+    display:flex;
+    margin-bottom: $s-size;
+    flex-direction: column;
+    @media(min-width:$desktop-breakpoint){
+        flex-direction: row;
+        margin-bottom: $m-size;
+    };
+};
+
+.filter__contain {
+    margin-bottom:$s-size;
+    @media(min-width:$desktop-breakpoint){
+        margin: 0 $s-size 0 0;
+    };
+};

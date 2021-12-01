@@ -1,0 +1,27 @@
+.text-input {
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 2px;
+    padding: $s-size;
+    font-size: $l-font-size;
+    height: 50px;
+};
+
+.select {
+    @extend .text-input;
+    border-radius: 2px;
+};
+
+.DateRangePickerInput.DateRangePickerInput_1.DateRangePickerInput__withBorder.DateRangePickerInput__withBorder_2.DateRangePickerInput__showClearDates.DateRangePickerInput__showClearDates_3 {
+    height: 50px;
+    border-radius: 2px;
+};
+
+.SingleDatePickerInput.SingleDatePickerInput_1.SingleDatePickerInput__withBorder.SingleDatePickerInput__withBorder_2 {
+    height: 50px;
+    border-radius: 2px;
+};
+
+.text-area {
+    @extend .text-input;
+    height: 10rem;
+};

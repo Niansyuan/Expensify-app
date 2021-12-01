@@ -1,0 +1,32 @@
+.box-layout {
+    background:url('/public//image/background__login.jpg');
+    background-position: 55% 15%;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+};
+
+.box-layout__box {
+    background:fade-out(white,.4);
+    padding: $l-size $m-size;
+    text-align: center;
+    width: 30rem;
+    border-radius: 3px;
+}
+
+.box-layout__title {
+    font-size: $l-size;
+    margin: 0 0 $l-size 0;
+    font-weight: 500;
+    line-height: 1;
+};
+
+.box-layout__subtitle {
+    font-size: $m-font-size;
+    margin: 0 0 $l-size 0;
+    font-weight: 300;
+    line-height: 1;
+}

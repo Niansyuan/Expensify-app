@@ -1,0 +1,22 @@
+.page-header {
+    background: $light-green;
+    margin-bottom: $m-size;
+    padding: $m-size 0;
+};
+
+.page-header__contain {
+    display: flex;
+    flex-wrap: wrap;
+};
+
+.page-header__title {
+    font-size: $xl-font-size;
+    font-weight: 200;
+    span {
+        font-weight: 700;
+    };
+};
+
+.page-header__action {
+    margin-top: $s-size;
+};

@@ -1,0 +1,19 @@
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.loader__image {
+    height: 6rem;
+    width:  6rem;
+};
+
+.loader__title {
+    color: #1b1b1b;
+    font-size: $m-size;
+    font-weight: 600;
+    margin: $s-size $s-size;
+};
