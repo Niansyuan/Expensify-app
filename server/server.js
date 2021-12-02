@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-const publicPath = path.join(__dirname, '..', 'public'); //'..' 是因為public folder在上一層資料夾
+const publicPath = path.join(__dirname, '..', 'docs'); //'..' 是因為docs folder在上一層資料夾
 const port = process.env.PORT || 3000;
 
 //use the public directory to serve up all of our static assets
