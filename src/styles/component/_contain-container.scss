@@ -3,3 +3,18 @@
     padding: 0 $m-size;
     max-width: 80rem;
 };
+
+.contain-container >ol {
+    display: list-item;
+    list-style-type: circle;
+    margin: $m-size 0 $m-size $m-size;
+};
+
+.contain-container>h3 {
+    margin-top: $m-size;
+    font-size: $l-font-size;
+};
+
+.contain-container >ol>li>em {
+    font-weight: 700;
+};

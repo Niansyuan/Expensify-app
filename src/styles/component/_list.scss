@@ -46,7 +46,11 @@
 
 .list-item__title {
     font-size: $l-font-size;
+    padding: $xxs-size $s-size;
     color:$dark-brown;
+    background: $pink;
+    width:fit-content;
+    border-radius: $m-size;
     word-break: break-all;
     font-weight: 600;
 };

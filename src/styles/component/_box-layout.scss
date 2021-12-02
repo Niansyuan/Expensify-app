@@ -18,7 +18,7 @@
 }
 
 .box-layout__title {
-    font-size: $l-size;
+    font-size: $xxl-font-size;
     margin: 0 0 $l-size 0;
     font-weight: 500;
     line-height: 1;
@@ -26,7 +26,8 @@
 
 .box-layout__subtitle {
     font-size: $m-font-size;
-    margin: 0 0 $l-size 0;
+    margin: 0 0 $m-size 0;
+    padding: 0 $l-size;
     font-weight: 300;
     line-height: 1;
 }

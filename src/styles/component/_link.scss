@@ -1,0 +1,15 @@
+.link {
+    font-size: $m-font-size;
+    text-decoration: none;
+    color: $white;
+};
+
+.link--button {
+    font-size: $m-font-size;
+    text-decoration: none;
+    color: $white;
+};
+
+.link:hover {
+    color: darken($shallow-green,10%);
+};

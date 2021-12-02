@@ -2,12 +2,17 @@
     background: $shallow-green;
     color: $white;
     border:none;
+    border-radius: 30px;
     font-size: $l-font-size;
     font-weight: 500;
     line-height: 1;
     padding: $xs-size $s-size;
+    margin: $xs-size 0 $xs-size 0;
     text-decoration: none;
     display: inline-block;
+};
+.button>i {
+    padding-right: $s-size;
 };
 
 .button:hover {
@@ -21,8 +26,12 @@
     font-size: $l-font-size;
 };
 
-.fas.fa-sign-out-alt {
-    margin: $xs-size $s-size 0 0;
+.button--link:hover {
+    text-decoration: underline;
+};
+
+.button--link>i {
+    padding: 0 $s-size;
 };
 
 .button--remove {
