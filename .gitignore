@@ -1,6 +1,5 @@
 /node_modules
 /src/playground
-/docs/dist
 .env.test
 .env.development
 .firebaserc

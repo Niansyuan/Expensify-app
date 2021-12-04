@@ -14,7 +14,11 @@ export const startLoginWithGoogle = () => {
 
 export const startLoginWithFacebook = () => {
     return () => {
-        return signInWithPopup(getAuth(), facebookProvider)
+        return signInWithPopup(getAuth(), facebookProvider).catch((error) => {
+            if (error.code === 'auth/account-exists-with-different-credential') {
+                alert(`Your Facebook account exists with different credential. Please login with google!`)
+            }
+        });
     };
 };
 
